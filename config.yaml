@@ -1,0 +1,15 @@
+credentials:
+  usernames:
+    ratan:
+      email: ratan@example.com
+      name: Ratan
+      password: "$2b$12$123456789012345678901uM4K8YxQvQ0l0M3j2dQ9Jx8g0L2"
+
+cookie:
+  expiry_days: 30
+  key: random_signature_key
+  name: ratan_quant_terminal
+
+preauthorized:
+  emails:
+    - ratan@example.com
