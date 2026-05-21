@@ -6,3 +6,4 @@ plotly
 ta
 nsepython
 scikit-learn
+nselib
