@@ -1,5 +1,5 @@
 import streamlit as st
-import yfinance as yf
+from streamlit_autorefresh import st_autorefresh
 import pandas as pd
 
 # ---------------------------------------
