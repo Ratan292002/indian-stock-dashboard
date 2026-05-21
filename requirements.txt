@@ -11,3 +11,4 @@ streamlit-autorefresh
 reportlab
 requests
 nsepython
+streamlit-authenticator
