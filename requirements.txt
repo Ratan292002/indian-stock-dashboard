@@ -10,3 +10,4 @@ nselib
 streamlit-autorefresh
 reportlab
 requests
+nsepython
