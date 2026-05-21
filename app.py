@@ -12,7 +12,14 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+# ---------------------------------------
+# AUTO REFRESH ENGINE
+# ---------------------------------------
 
+st_autorefresh(
+    interval=60000,
+    key="market_refresh"
+)
 # ---------------------------------------
 # CUSTOM CSS
 # ---------------------------------------
@@ -204,4 +211,7 @@ st.divider()
 
 st.caption(
     "Institutional-grade educational market terminal"
+)
+st.success(
+    "🟢 Live Market Engine Active • Auto Refresh Every 60 Seconds"
 )
