@@ -8,37 +8,36 @@ import pandas as pd
 # AUTHENTICATION
 # ---------------------------------------
 
-with open("config.yaml") as file:
-    config = yaml.load(file, Loader=SafeLoader)
+# ---------------------------------------
+# SIMPLE LOGIN SYSTEM
+# ---------------------------------------
 
-authenticator = stauth.Authenticate(
+USERNAME = "ratan"
 
-    config['credentials'],
+PASSWORD = "12345"
 
-    config['cookie']['name'],
+st.sidebar.title("🔐 Login")
 
-    config['cookie']['key'],
+username = st.sidebar.text_input("Username")
 
-    config['cookie']['expiry_days']
+password = st.sidebar.text_input(
+    "Password",
+    type="password"
 )
 
-authenticator.login()
-
-if st.session_state["authentication_status"]:
-
-    authenticator.logout("Logout", "sidebar")
+if username == USERNAME and password == PASSWORD:
 
     st.sidebar.success(
-        f"Welcome {st.session_state['name']}"
+        f"Welcome {username}"
     )
 
-elif st.session_state["authentication_status"] is False:
+else:
 
-    st.error("Username/password incorrect")
+    st.warning(
+        "Please login to access platform"
+    )
 
     st.stop()
-
-elif st.session_state["authentication_status"] is None:
 
     st.warning("Please login to access platform")
 
