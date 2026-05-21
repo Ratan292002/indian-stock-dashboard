@@ -325,65 +325,25 @@ for s in signals:
     st.success(s)
 
 # ----------------------------------------------------
-# CANDLE CHART
+# PRICE CHART
 # ----------------------------------------------------
 
 st.subheader("📈 Institutional Price Chart")
 
-fig = go.Figure()
+chart_df = pd.DataFrame({
 
-fig.add_trace(
+    "Close": close_series,
 
-    go.Candlestick(
+    "EMA20": df["EMA20"],
 
-        x=df.index,
+    "EMA50": df["EMA50"]
 
-        open=df["Open"],
+})
 
-        high=df["High"],
-
-        low=df["Low"],
-
-        close=df["Close"],
-
-        name="Price"
-    )
-)
-
-fig.add_trace(
-
-    go.Scatter(
-
-        x=df.index,
-
-        y=df["EMA20"],
-
-        name="EMA20"
-    )
-)
-
-fig.add_trace(
-
-    go.Scatter(
-
-        x=df.index,
-
-        y=df["EMA50"],
-
-        name="EMA50"
-    )
-)
-
-fig.update_layout(
-    height=700,
-    template="plotly_dark"
-)
-
-st.plotly_chart(
-    fig,
+st.line_chart(
+    chart_df,
     use_container_width=True
 )
-
 # ----------------------------------------------------
 # ANALYTICS PANELS
 # ----------------------------------------------------
