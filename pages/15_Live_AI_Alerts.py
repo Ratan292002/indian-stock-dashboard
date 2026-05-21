@@ -1,6 +1,7 @@
 import streamlit as st
 import yfinance as yf
 import pandas as pd
+from telegram_alerts import send_telegram_alert
 from ta.trend import EMAIndicator
 from ta.momentum import RSIIndicator
 
@@ -101,6 +102,21 @@ for stock_name, symbol in stocks.items():
         # --------------------------------
 
         if score >= 80:
+            send_telegram_alert(
+    f"""
+🚨 HIGH CONVICTION ALERT
+
+Stock: {stock_name}
+
+AI Score: {score}/100
+
+Signal Drivers:
+{", ".join(reasons)}
+
+Current Price:
+₹{round(current_price,2)}
+"""
+            )
 
             signal = "🟢 HIGH CONVICTION"
 
