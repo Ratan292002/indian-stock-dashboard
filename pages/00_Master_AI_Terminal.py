@@ -237,8 +237,13 @@ if latest_macd > latest_signal:
 
 # Volume
 
-avg_volume = df["Volume"].tail(20).mean()
-latest_volume = df["Volume"].iloc[-1]
+avg_volume = float(
+    df["Volume"].tail(20).mean()
+)
+
+latest_volume = float(
+    df["Volume"].iloc[-1]
+)
 
 if latest_volume > avg_volume:
     score += 15
