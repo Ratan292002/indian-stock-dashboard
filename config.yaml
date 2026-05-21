@@ -3,7 +3,7 @@ credentials:
     ratan:
       email: ratan@example.com
       name: Ratan
-      password: "$2b$12$123456789012345678901uM4K8YxQvQ0l0M3j2dQ9Jx8g0L2"
+      password: "$2b$12$MWg3wY0mT6j5i5K9XQzS2uP9jP8kM4N9x8VqWjM2bM5Y8xQw0s8aK"
 
 cookie:
   expiry_days: 30
