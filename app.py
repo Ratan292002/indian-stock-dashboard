@@ -35,15 +35,14 @@ def load_data(symbol):
     return data
 
 df = load_data(symbol)
-
-close = df['Close']
+close = df['Close'].squeeze()
 
 ema20 = EMAIndicator(close=close, window=20).ema_indicator()
 ema50 = EMAIndicator(close=close, window=50).ema_indicator()
 
 rsi = RSIIndicator(close=close).rsi()
 
-current_price = round(close.iloc[-1], 2)
+current_price = round(float(close.iloc[-1]), 2)
 
 score = 0
 signals = []
