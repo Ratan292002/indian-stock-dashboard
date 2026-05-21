@@ -143,30 +143,43 @@ except:
 # INDICATORS
 # ----------------------------------------------------
 
+close_series = pd.Series(
+    df["Close"].values.flatten()
+)
+
+high_series = pd.Series(
+    df["High"].values.flatten()
+)
+
+low_series = pd.Series(
+    df["Low"].values.flatten()
+)
+
 df["EMA20"] = EMAIndicator(
-    close=df["Close"],
+    close=close_series,
     window=20
 ).ema_indicator()
 
 df["EMA50"] = EMAIndicator(
-    close=df["Close"],
+    close=close_series,
     window=50
 ).ema_indicator()
 
 df["RSI"] = RSIIndicator(
-    close=df["Close"],
+    close=close_series,
     window=14
 ).rsi()
 
-macd = MACD(close=df["Close"])
+macd = MACD(close=close_series)
 
 df["MACD"] = macd.macd()
+
 df["MACD_SIGNAL"] = macd.macd_signal()
 
 atr = AverageTrueRange(
-    high=df["High"],
-    low=df["Low"],
-    close=df["Close"]
+    high=high_series,
+    low=low_series,
+    close=close_series
 )
 
 df["ATR"] = atr.average_true_range()
@@ -175,12 +188,18 @@ df["ATR"] = atr.average_true_range()
 # LATEST VALUES
 # ----------------------------------------------------
 
-latest_close = float(df["Close"].iloc[-1])
+latest_close = float(close_series.iloc[-1])
+
 latest_ema20 = float(df["EMA20"].iloc[-1])
+
 latest_ema50 = float(df["EMA50"].iloc[-1])
+
 latest_rsi = float(df["RSI"].iloc[-1])
+
 latest_macd = float(df["MACD"].iloc[-1])
+
 latest_signal = float(df["MACD_SIGNAL"].iloc[-1])
+
 latest_atr = float(df["ATR"].iloc[-1])
 
 # ----------------------------------------------------
