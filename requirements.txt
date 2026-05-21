@@ -8,3 +8,4 @@ nsepython
 scikit-learn
 nselib
 streamlit-autorefresh
+reportlab
