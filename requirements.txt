@@ -13,3 +13,4 @@ requests
 nsepython
 streamlit-authenticator
 streamlit-autorefresh
+scikit-learn
