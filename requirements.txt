@@ -7,3 +7,4 @@ ta
 nsepython
 scikit-learn
 nselib
+streamlit-autorefresh
