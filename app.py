@@ -1,7 +1,48 @@
 import streamlit as st
+import yaml
+from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
 from streamlit_autorefresh import st_autorefresh
 import pandas as pd
+# ---------------------------------------
+# AUTHENTICATION
+# ---------------------------------------
 
+with open("config.yaml") as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+authenticator = stauth.Authenticate(
+
+    config['credentials'],
+
+    config['cookie']['name'],
+
+    config['cookie']['key'],
+
+    config['cookie']['expiry_days']
+)
+
+authenticator.login()
+
+if st.session_state["authentication_status"]:
+
+    authenticator.logout("Logout", "sidebar")
+
+    st.sidebar.success(
+        f"Welcome {st.session_state['name']}"
+    )
+
+elif st.session_state["authentication_status"] is False:
+
+    st.error("Username/password incorrect")
+
+    st.stop()
+
+elif st.session_state["authentication_status"] is None:
+
+    st.warning("Please login to access platform")
+
+    st.stop()
 # ---------------------------------------
 # PAGE CONFIG
 # ---------------------------------------
