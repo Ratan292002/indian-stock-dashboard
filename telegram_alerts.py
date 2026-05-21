@@ -1,8 +1,8 @@
+import streamlit as st
 import requests
 
-BOT_TOKEN = "8791019465:AAET0VzLU_hf4uTFd-owa-Stcb7HF_5eqpE"
-
-CHAT_ID = "1680644187"
+BOT_TOKEN = st.secrets["BOT_TOKEN"]
+CHAT_ID = st.secrets["CHAT_ID"]
 
 # ---------------------------------------
 # TELEGRAM ALERT FUNCTION
